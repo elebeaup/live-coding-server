@@ -1,31 +1,38 @@
+const path = require('path');
+
 const express = require('express');
+const WebSocket = require('ws');
 const urlExists = require('url-exists');
-const proxy = require('http-proxy-middleware');
 const cors = require('cors');
 
-const port = process.env.PORT || 3000;
+const { createServer } = require('http');
+const argv = require('yargs').argv;
+
+const { processWsConnection } = require('./handlers');
+
 const app = express();
-
-const ttyProxy = proxy(['/terminal/**', '/*.js'], {
-  target: 'http://localhost:7681',
-  ws: true,
-  pathRewrite: {
-    '^/terminal': '/'
-  }
-});
-
-app.use(ttyProxy);
+app.use('/xterm', express.static(path.join(__dirname, '/public')));
 app.use(cors());
 
-app.head('/api/ping', function (req, res) {
+const server = createServer(app);
+const wss = new WebSocket.Server({ server });
+const port = argv.p || 3000;
+
+wss.on('connection', function(ws, req) {
+  processWsConnection(ws, req, {
+    command: argv._[0],
+    basedir: argv.b
+  });
+});
+
+app.head('/api/ping', function(req, res) {
   const url = req.query.url;
-  console.log(`Pinging ${url}`);
+  console.log(`${new Date()} pinging ${url}`);
 
   urlExists(url, (err, exists) => {
     if (!exists) {
       res.status(404);
-    }
-    else {
+    } else {
       res.status(200);
     }
 
@@ -33,4 +40,6 @@ app.head('/api/ping', function (req, res) {
   });
 });
 
-app.listen(port);
+server.listen(port, function() {
+  console.log(`Listening on http://localhost:${port}`);
+});

@@ -5,17 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ttyd": "cd $REVEAL_BASEDIR && ttyd -a -t fontSize=30 -t fontFamily=\"Inconsolata for Powerline,Consolas,monospace\" -t 'theme={\"background\":\"rgb(11,40,50)\",\"foreground\":\"rgb(255, 255, 255)\",\"cursor\": \"#073642\",\"black\":\"#073642\",\"blue\":\"#538bd0\",\"green\":\"#859900\",\"cyan\":\"#2aa198\",\"red\":\"#dc322f\",\"magenta\":\"#d33682\",\"yellow\":\"#b58900\",\"white\":\"#eee8d5\",\"brightBlack\":\"#002b36\",\"brightBlue\":\"#839496\",\"brightGreen\":\"#586e75\",\"brightCyan\":\"#93a1a1\",\"brightRed\":\"#cb4b16\",\"brightMagenta\":\"#6c71c4\",\"brightYellow\":\"#657b83\",\"brightWhite\":\"#fdf6e3\"}' sh -c 'cd $1 ; exec $SHELL' shell",
-    "server": "node server.js",
-    "start": "parallelshell \"npm run server\" \"npm run ttyd\""
+    "start": "node server.js"
   },
   "author": "Emmanuel Lebeaupin",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^0.20.0",
-    "url-exists": "^1.0.3"
+    "url-exists": "^1.0.3",
+    "node-pty": "^0.9.0",
+    "ws": "^7.2.0",
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
