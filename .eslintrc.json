@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended"
+  ],
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2016
+  },
+  "rules": {
+    "node/exports-style": [2, "module.exports"],
+
+    // Variables
+    "no-unused-vars": 1,
+    "no-shadow-restricted-names": 2,
+    "no-shadow": 2,
+
+    // Stylistic Issues
+    "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "semi-spacing": [2, {"before": false, "after": true}],
+    "semi": 2,
+    "space-before-function-paren": [2, "never"],
+
+    // ECMAScript 6
+    "arrow-parens": [2, "always"],
+    "prefer-template": 2
+  }
+}

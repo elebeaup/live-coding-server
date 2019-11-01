@@ -17,6 +17,10 @@
     "http-proxy-middleware": "^0.20.0",
     "url-exists": "^1.0.3"
   },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-plugin-node": "^10.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/elebeaup/live-coding-server.git"
