@@ -8,10 +8,15 @@ const cors = require('cors');
 const { createServer } = require('http');
 const argv = require('yargs').argv;
 
+const livereload = require('livereload');
+
 const { processWsConnection } = require('./handlers');
 
+const basedir = argv.b || './';
 const app = express();
-app.use('/xterm', express.static(path.join(__dirname, '/public')));
+app.use('/xterm', express.static(path.join(__dirname, '/xterm')));
+app.use(require('connect-livereload')());
+app.use('/', express.static(path.join(basedir, '/')));
 app.use(cors());
 
 const server = createServer(app);
@@ -21,7 +26,7 @@ const port = argv.p || 3000;
 wss.on('connection', function(ws, req) {
   processWsConnection(ws, req, {
     command: argv._[0],
-    basedir: argv.b
+    basedir
   });
 });
 
@@ -41,5 +46,8 @@ app.head('/api/ping', function(req, res) {
 });
 
 server.listen(port, function() {
-  console.log(`Listening on http://localhost:${port}`);
+  const lrserver = livereload.createServer();
+  lrserver.watch(basedir);
+  console.log(`Listening on http://localhost:${port}, serving ${basedir}`);
 });
+
