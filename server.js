@@ -1,8 +1,9 @@
 const path = require('path');
 
+const axios = require('axios');
+
 const express = require('express');
 const WebSocket = require('ws');
-const urlExists = require('url-exists');
 const cors = require('cors');
 
 const { createServer } = require('http');
@@ -34,15 +35,16 @@ app.head('/api/ping', function(req, res) {
   const url = req.query.url;
   console.log(`${new Date()} pinging ${url}`);
 
-  urlExists(url, (err, exists) => {
-    if (!exists) {
-      res.status(404);
-    } else {
+  axios.head(url)
+    .then((response) => {
       res.status(200);
-    }
-
-    res.end();
-  });
+    })
+    .catch((error) => {
+      res.status(404);
+    })
+    .then(() => {
+      res.end();
+    });
 });
 
 server.listen(port, function() {
