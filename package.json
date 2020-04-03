@@ -2,7 +2,7 @@
   "name": "live-coding-server",
   "version": "0.1.0",
   "description": "simple server for helping to make live-coding demonstrations easier",
-  "main": "server.js",
+  "bin": "live-coding-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
