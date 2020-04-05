@@ -38,7 +38,7 @@ class LiveCodingServer {
     const wss = new WebSocket.Server({server});
 
     wss.on('connection', function (ws, req) {
-      processWsConnection(ws, req, {
+      new processWsConnection(ws, req, {
         command: xtermOptions.command,
         basedir
       });
