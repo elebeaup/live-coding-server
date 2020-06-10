@@ -13,7 +13,7 @@ $ npm install
 ## Usage
 
 ```
-npm start [-- [options] [<command>]]
+npm start [-- [options]]
 ```
 By default, it starts a server at port 3000.
 
@@ -23,8 +23,9 @@ The 10<sup>th</sup> shows a terminal based on [Xterm.js](https://github.com/xter
 ## Options
 
 ```
--p=NUMBER   - Port to listen (default: 3000)
--b=PATH     - Base directory (default: .)
+-b, --basedir=PATH  - Directory to serve static files from (default: .)
+-p, --port=NUMBER   - Port to listen (default: 3000)
+--xterm.command     - Default command run in xterm (default: sh)
 ```
 
 ## Credits
