@@ -1,0 +1,24 @@
+{
+  "name": "demo",
+  "author": "Emmanuel Lebeaupin",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "snowpack install",
+    "start": "../live-coding-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1",
+    "snowpack": "^2.4.0",
+    "xterm": "^4.6.0",
+    "xterm-addon-attach": "^0.6.0",
+    "xterm-addon-fit": "^0.4.0"
+  },
+  "devDependencies": {},
+  "snowpack": {
+    "install": [
+      "xterm/**/*.+(css|js)",
+      "xterm-addon-fit"
+    ]
+  }
+}
