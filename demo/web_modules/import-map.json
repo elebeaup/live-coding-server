@@ -1,5 +1,6 @@
 {
   "imports": {
+    "lit-element": "./lit-element.js",
     "xterm": "./xterm.js",
     "xterm-addon-fit": "./xterm-addon-fit.js",
     "xterm/css/xterm.css": "./xterm/css/xterm.css",
