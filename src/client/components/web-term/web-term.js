@@ -1,6 +1,7 @@
-import { FitAddon } from '../../../web_modules/xterm-addon-fit.js';
-import Terminal from '../../../web_modules/xterm.js';
-import { html, LitElement } from '../../../web_modules/lit-element.js';
+import { FitAddon } from 'xterm-addon-fit';
+import { Terminal } from 'xterm';
+import { unsafeCSS, css, html, LitElement } from 'lit-element';
+import styles from 'bundle-text:xterm/css/xterm.css';
 
 const Command = {
   OUTPUT: '0',
@@ -11,6 +12,11 @@ const Command = {
 };
 
 class WebTerm extends LitElement {
+
+  static get styles() {
+    return css`${unsafeCSS(styles)}`;
+  }
+
   constructor() {
     super();
     this.textEncoder = new TextEncoder();
@@ -19,10 +25,7 @@ class WebTerm extends LitElement {
   }
 
   render() {
-    return html`
-      <link href="/web_modules/xterm/css/xterm.css" rel="stylesheet">
-      <div id="terminal-container"></div>
-    `;
+    return html`<div id="terminal-container"></div>`;
   }
 
   firstUpdated() {
@@ -32,7 +35,7 @@ class WebTerm extends LitElement {
   }
 
   openTerminal() {
-    this.terminal = new Terminal.Terminal();
+    this.terminal = new Terminal();
     const { fitAddon, terminal } = this;
     terminal.loadAddon(fitAddon);
     terminal.open(this.shadowRoot.getElementById('terminal-container'));

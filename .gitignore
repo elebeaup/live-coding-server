@@ -1,1 +1,15 @@
+# Dependency directories
 node_modules/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Build directory
+dist
+
+# Parcel
+.parcel-cache/
+
+# Slide show example
+demo/resources/live-coding-server/

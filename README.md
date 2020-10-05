@@ -17,9 +17,6 @@ npm start [-- [options]]
 ```
 By default, it starts a server at port 3000.
 
-An useful example how to use this tool is available in the github repository [pulumi-presentation](https://github.com/elebeaup/pulumi-presentation).
-The 10<sup>th</sup> shows a terminal based on [Xterm.js](https://github.com/xtermjs/xterm.js) that can be used to run any command and a web browser that auto refreses itself.
-
 ## Options
 
 ```
@@ -28,9 +25,17 @@ The 10<sup>th</sup> shows a terminal based on [Xterm.js](https://github.com/xter
 --xterm.command     - Default command run in xterm (default: sh)
 ```
 
+## Demo
+
+```
+npm run lcs-demo
+```
+
+Then, open the URL on your web browser and you can see the default shell running in the browser.
+
 ## Credits
 
-- [ttyd][1]: is used for the client side (index.html)
+- [ttyd][1]: is a tool for sharing terminal over the web
 - [demoit][2]: is a tool that helps you create beautiful live-coding demonstrations
 
   [1]: https://github.com/tsl0922/ttyd

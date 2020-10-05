@@ -29,7 +29,6 @@ class LiveCodingServer {
     const port = this.port;
     const xtermOptions = this.xtermOptions;
 
-    app.use('/xterm', express.static(path.join(__dirname, '/xterm')));
     app.use(require('connect-livereload')());
     app.use('/', express.static(path.join(basedir, '/')));
     app.use(cors());

@@ -10,7 +10,7 @@ const argv = require('yargs')
   .option('xterm.command', {type: 'string', default: 'sh', description: 'Default command run in xterm'})
   .argv;
 
-const createServer = require("./index");
+const createServer = require('./live-coding-server');
 
 const params = {
   basedir: argv.b,

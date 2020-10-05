@@ -3,7 +3,7 @@ const path = require('path');
 
 const pty = require('node-pty');
 
-const { Command } = require('./constants');
+const { Command } = require('../common/constants');
 const { TextEncoder } = require('util');
 
 const textEncoder = new TextEncoder();

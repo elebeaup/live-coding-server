@@ -1,21 +1,19 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:node/recommended"
+    "eslint:recommended"
   ],
   "env": {
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "browser": true
   },
   "parserOptions": {
-    "ecmaVersion": 2016
+    "sourceType": "module",
+    "ecmaVersion": 2018
   },
   "rules": {
-    "node/exports-style": [2, "module.exports"],
-
     // Variables
-    "no-unused-vars": 1,
     "no-shadow-restricted-names": 2,
     "no-shadow": 2,
 
@@ -28,5 +26,23 @@
     // ECMAScript 6
     "arrow-parens": [2, "always"],
     "prefer-template": 2
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/server/**/*.js",
+        "src/common/**/*.js"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended"
+      ],
+      "rules": {
+        // Variables
+        "no-unused-vars": 1,
+
+        "node/exports-style": [2, "module.exports"],
+      }
+    }
+  ]
 }

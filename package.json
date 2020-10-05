@@ -2,10 +2,16 @@
   "name": "live-coding-server",
   "version": "0.1.0",
   "description": "simple server for helping to make live-coding demonstrations easier",
-  "bin": "live-coding-server.js",
+  "bin": "src/server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node live-coding-server.js"
+    "start": "npm run lcs-server --",
+    "lint": "eslint --fix . && echo 'Lint complete.'",
+    "lcs-demo": "npx npm-run-all --parallel lcs-client lcs-server:demo",
+    "lcs-client": "npx parcel watch src/client/components/index.js --target dev --dist-dir demo/resources/live-coding-server",
+    "lcs-server": "node src/server/index.js",
+    "lcs-server:demo": "node src/server/index.js -b demo",
+    "build-client": "npx parcel build src/client/components/index.js --no-source-maps --dist-dir ./dist/client/live-coding-server"
   },
   "author": "Emmanuel Lebeaupin",
   "license": "MIT",
@@ -14,17 +20,37 @@
     "connect-livereload": "^0.6.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lit-element": "^2.4.0",
     "livereload": "^0.9.1",
     "node-pty": "^0.9.0",
     "ws": "^7.2.0",
+    "xterm": "^4.9.0",
+    "xterm-addon-attach": "^0.6.0",
+    "xterm-addon-fit": "^0.4.0",
     "yargs": "^14.2.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
-    "eslint-plugin-node": "^10.0.0"
+    "eslint-plugin-node": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.0.0-beta.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/elebeaup/live-coding-server.git"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "targets": {
+    "dev": {
+      "sourceMap": {
+        "inline": false,
+        "inlineSources": true
+      },
+      "engines": {
+        "browsers": "Chrome 70"
+      }
+    }
   }
 }
