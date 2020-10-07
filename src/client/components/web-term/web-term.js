@@ -14,7 +14,19 @@ const Command = {
 class WebTerm extends LitElement {
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return [
+      css`
+        :host {
+          display:block;
+        }
+
+        #terminal-container {
+          height: 100%;
+          background-color: rgb(11,40,50);
+        }
+      `,
+      css`${unsafeCSS(styles)}`
+    ];
   }
 
   constructor() {
@@ -39,7 +51,6 @@ class WebTerm extends LitElement {
     const { fitAddon, terminal } = this;
     terminal.loadAddon(fitAddon);
     terminal.open(this.shadowRoot.getElementById('terminal-container'));
-    fitAddon.fit();
     terminal.onData(this.onTerminalData.bind(this));
     terminal.onResize(this.onTerminalResize.bind(this));
   }
@@ -71,6 +82,7 @@ class WebTerm extends LitElement {
   }
 
   onSocketOpen() {
+    setTimeout(() => this.fitAddon.fit(), 250);
   }
 
   onSocketData() {
