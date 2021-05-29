@@ -23,7 +23,7 @@
     "lit-element": "^2.4.0",
     "livereload": "^0.9.1",
     "node-pty": "^0.9.0",
-    "ws": "^7.2.0",
+    "ws": "^7.4.6",
     "xterm": "^4.9.0",
     "xterm-addon-attach": "^0.6.0",
     "xterm-addon-fit": "^0.4.0",
