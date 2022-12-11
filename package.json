@@ -19,7 +19,7 @@
     "axios": "^0.19.2",
     "connect-livereload": "^0.6.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lit-element": "^2.4.0",
     "livereload": "^0.9.1",
     "node-pty": "^0.9.0",
